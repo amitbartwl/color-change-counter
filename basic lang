@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Color Change Counter</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f4f4f4;
+            padding: 50px;
+        }
+
+        h1 {
+            transition: color 0.3s ease;
+        }
+
+        button {
+            color: white;
+            background: #42A1EC;
+            border: 1px solid #0077CC;
+            border-radius: 5px;
+            padding: 10px 20px;
+            margin: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button:disabled {
+            background: lightgray;
+            cursor: not-allowed;
+        }
+
+        p {
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+
+<h1 id="xyz">Namaste Bharat!</h1>
+
+<button onclick="setColor('red', event)">RED</button>
+<button onclick="setColor('blue', event)">BLUE</button> 
+<button onclick="setColor('green', event)">GREEN</button> 
+
+
+<p>Color changed <span id="counter">0</span> times!</p>
+
+<script>
+    function setColor(color, event) {
+        console.log("Setting color to", color);
+        
+        // Change heading color
+        let heading = document.getElementById('xyz');
+        heading.style.color = color;
+
+        // Update counter
+        let span = document.getElementById("counter");
+        let count = +span.innerHTML; // Convert string to number
+        span.innerHTML = count + 1;
+
+        // Disable the clicked button
+        const allButtons = document.getElementsByTagName("button");
+        for (let i = 0; i < allButtons.length; i++) {
+            allButtons[i].disabled = false; // Enable all buttons
+        }
+        
+        const button = event.target; // Get the clicked button
+        button.disabled = true; // Disable the clicked button
+    }
+
+    function show(id) {
+        // Functionality for show (to be implemented)
+    }
+
+    function remove(id) {
+        // Functionality for remove (to be implemented)
+    }
+</script>
+
+</body>
+</html>
